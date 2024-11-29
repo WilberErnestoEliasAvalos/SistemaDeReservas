@@ -1,0 +1,76 @@
+<mat-card class="reporte-card">
+  <mat-card-title>Generar Reporte</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="reporteForm" (ngSubmit)="generarReporte()">
+      <div class="form-container">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Tipo de Reporte</mat-label>
+          <mat-select [(value)]="reporteSeleccionado">
+            <mat-option value="reservasPorSala">Reservas por Sala</mat-option>
+            <mat-option value="reservasPorUsuario">Reservas por Usuario</mat-option>
+            <mat-option value="estadosReservas">Estados de Reservas</mat-option>
+            <mat-option value="ingresosPorSala">Ingresos por Sala</mat-option>
+            <mat-option value="usoSalasPorUbicacion">Uso de Salas por Ubicación</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Fecha Inicio</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="fechaInicio" required>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Fecha Fin</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="fechaFin" required>
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" class="full-width">Generar Reporte</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="dataSource.length > 0" class="reporte-card">
+  <mat-card-title>Reporte de {{ reporteSeleccionado }}</mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="sala" *ngIf="reporteSeleccionado === 'reservasPorSala' || reporteSeleccionado === 'ingresosPorSala'">
+        <th mat-header-cell *matHeaderCellDef> Sala </th>
+        <td mat-cell *matCellDef="let element"> {{element.sala}} </td>
+      </ng-container>
+      <ng-container matColumnDef="usuario" *ngIf="reporteSeleccionado === 'reservasPorUsuario'">
+        <th mat-header-cell *matHeaderCellDef> Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
+      </ng-container>
+      <ng-container matColumnDef="estado_reserva" *ngIf="reporteSeleccionado === 'estadosReservas'">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let element"> {{element.estado_reserva}} </td>
+      </ng-container>
+      <ng-container matColumnDef="ingresos" *ngIf="reporteSeleccionado === 'ingresosPorSala'">
+        <th mat-header-cell *matHeaderCellDef> Ingresos </th>
+        <td mat-cell *matCellDef="let element"> {{element.ingresos | currency}} </td>
+      </ng-container>
+      <ng-container matColumnDef="ubicacion" *ngIf="reporteSeleccionado === 'usoSalasPorUbicacion'">
+        <th mat-header-cell *matHeaderCellDef> Ubicación </th>
+        <td mat-cell *matCellDef="let element"> {{element.ubicacion}} </td>
+      </ng-container>
+      <ng-container matColumnDef="total_reservas" *ngIf="reporteSeleccionado === 'reservasPorSala' || reporteSeleccionado === 'reservasPorUsuario' || reporteSeleccionado === 'estadosReservas' || reporteSeleccionado === 'usoSalasPorUbicacion'">
+        <th mat-header-cell *matHeaderCellDef> Total Reservas </th>
+        <td mat-cell *matCellDef="let element"> {{element.total_reservas}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div class="chart-container">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [type]="barChartType">
+      </canvas>
+    </div>
+    <button mat-raised-button color="accent" (click)="imprimirReporte()">Imprimir Reporte</button>
+  </mat-card-content>
+</mat-card>

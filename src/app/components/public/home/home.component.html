@@ -1,0 +1,59 @@
+<!-- Sección 1: Consulta de información sobre las salas -->
+<section class="rooms-info">
+  <h2>Salas Disponibles</h2>
+  <swiper-container [loop]="loop" navigation="true" [breakpoints]="breakpoints">
+    <ng-container *ngFor="let room of rooms">
+      <swiper-slide>
+        <mat-card class="room-card" (click)="openReservationDialog(room)">
+          <div class="image-container">
+            <img mat-card-image [src]="room.img" alt="{{ room.nombre }}">
+          </div>
+          <mat-card-header>
+            <mat-card-title>{{ room.nombre }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Capacidad: {{ room.capacidad }} personas</p>
+            <p>Actividades: {{ room.actividad }}</p>
+            <p>Descripción: {{ room.descripcion }}</p>
+            <p>Precio: ${{room.precio}}/hora</p>
+          </mat-card-content>
+        </mat-card>
+      </swiper-slide>
+    </ng-container>
+  </swiper-container>
+</section>
+
+<!-- Sección 2: Tarifas y horarios -->
+<section class="rooms-details">
+  <h2>Detalles de las Salas</h2>
+  <div class="table-container">
+    <table mat-table [dataSource]="rooms" class="mat-elevation-z8">
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef data-label="Nombre"> Nombre </th>
+        <td mat-cell *matCellDef="let room" data-label="Nombre"> {{room.nombre}} </td>
+      </ng-container>
+
+      <!-- Precio Column -->
+      <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef data-label="Precio"> Precio </th>
+        <td mat-cell *matCellDef="let room" data-label="Precio"> ${{room.precio}}/hora </td>
+      </ng-container>
+
+      <!-- Actividad Column -->
+      <ng-container matColumnDef="actividad">
+        <th mat-header-cell *matHeaderCellDef data-label="Actividad"> Actividad </th>
+        <td mat-cell *matCellDef="let room" data-label="Actividad"> {{room.actividad}} </td>
+      </ng-container>
+
+      <!-- Ubicación Column -->
+      <ng-container matColumnDef="ubicacion">
+        <th mat-header-cell *matHeaderCellDef data-label="Ubicación"> Ubicación </th>
+        <td mat-cell *matCellDef="let room" data-label="Ubicación"> {{getUbicacionDescripcion(room.ubicacion_id)}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+{
+  "name": "sistema-reservas",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^19.0.0",
+    "@angular/cdk": "^19.0.0",
+    "@angular/common": "^19.0.0",
+    "@angular/compiler": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "@angular/material": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "@angular/platform-browser-dynamic": "^19.0.0",
+    "@angular/router": "^19.0.0",
+    "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.6",
+    "glob": "^9.3.5",
+    "lru-cache": "^11.0.2",
+    "moment-timezone": "^0.5.46",
+    "ng2-charts": "^7.0.0",
+    "rimraf": "^4.4.1",
+    "rxjs": "~7.8.1",
+    "swiper": "^11.1.15",
+    "tslib": "^2.8.1",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.0.1",
+    "@angular/cli": "^19.0.1",
+    "@angular/compiler-cli": "^19.0.0",
+    "@types/jasmine": "~5.1.4",
+    "jasmine-core": "~5.4.0",
+    "karma": "~6.4.4",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.1",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "^5.6.0"
+  }
+}

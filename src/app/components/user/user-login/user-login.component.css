@@ -1,0 +1,9 @@
+.login-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.login-actions {
+  margin-top: 20px;
+}

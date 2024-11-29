@@ -1,0 +1,46 @@
+h2{
+  text-align: center;
+  margin: 10px;
+}
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; /* Asegura que los bordes se colapsen en uno solo */
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.12); /* Agrega bordes a todas las celdas */
+}
+
+.available {
+  background-color: #d4edda; /* Verde claro */
+}
+
+.occupied {
+  background-color: #f8d7da; /* Rojo claro */
+}
+
+.room-card {
+  max-width: 400px;
+}
+
+.room-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.room-card {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.room-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}

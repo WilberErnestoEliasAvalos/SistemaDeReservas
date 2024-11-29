@@ -1,0 +1,51 @@
+/* Aplicar box-sizing a todos los elementos */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Botones */
+.btn {
+  margin: 10px; /* Espaciado entre botones */
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-toolbar {
+  background-color: #D7E3FF !important; /* Color de fondo de la toolbar */
+  color: #005CBB !important; /* Color del texto de la toolbar */
+}
+
+/* Corregir los selectores CSS */
+.form-floating > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 0.75rem;
+  transition: all 0.2s;
+  pointer-events: none;
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+.form-floating > input {
+  height: calc(3.5rem + 2px);
+  padding: 1rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+/* Corregir el selector CSS */
+.form-floating > input:focus ~ label,
+.form-floating > input:not(:placeholder-shown) ~ label {
+  top: -1rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  color: #495057;
+}

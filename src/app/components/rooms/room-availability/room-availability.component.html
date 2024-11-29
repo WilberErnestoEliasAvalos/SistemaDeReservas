@@ -1,0 +1,55 @@
+<h2>Verifica la Disponibilidad</h2>
+<div class="date-picker-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccionar Fecha</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [(ngModel)]="selectedDate"
+      [min]="minDate"
+      (dateChange)="onDateChange($event)"
+    >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div class="table-container">
+  <table mat-table [dataSource]="rooms" class="mat-elevation-z8">
+    <!-- Columna Salas -->
+    <ng-container matColumnDef="sala">
+      <th mat-header-cell *matHeaderCellDef> Salas </th>
+      <td mat-cell *matCellDef="let room"> {{ room.nombre }} </td>
+    </ng-container>
+
+    <!-- Columnas de Horas -->
+    <ng-container *ngFor="let hour of hours" [matColumnDef]="hour">
+      <th mat-header-cell *matHeaderCellDef> {{ hour }} </th>
+      <td mat-cell *matCellDef="let room" [ngClass]="getAvailabilityClass(room, hour)"> </td>
+    </ng-container>
+
+    <!-- Filas y encabezado -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<h2>Reserva una Sala</h2>
+<div class="room-cards-container">
+  <mat-card class="room-card" appearance="outlined" *ngFor="let room of rooms" (click)="openReservationDialog(room)">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ room.nombre }}</mat-card-title>
+      <mat-card-subtitle>{{ getUbicacionDescripcion(room.ubicacion_id) }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image [src]="room.img" alt="Imagen de la sala" *ngIf="room.img" />
+    <mat-card-content>
+      <p><strong>Capacidad:</strong> {{ room.capacidad }} Personas</p>
+      <p><strong>Precio:</strong> {{ room.precio | currency }}</p>
+      <p><strong>Actividad:</strong> {{ room.actividad }}</p>
+      <p><strong>Descripción:</strong> {{ room.descripcion }}</p>
+      <p><strong>Disponible:</strong> {{ room.disponible ? 'Sí' : 'No' }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

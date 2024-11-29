@@ -1,0 +1,63 @@
+<div class="room-list">
+  <h2>Lista de Salas</h2>
+  <button mat-mini-fab color="primary" [routerLink]="['/rooms/create']" class="create-button">
+    <mat-icon>add</mat-icon>
+  </button>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-table-responsive">
+
+      <!-- Index Column -->
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let room; let i = index">{{ getIndex(i) }}</td>
+      </ng-container>
+
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let room">{{ room.nombre }}</td>
+      </ng-container>
+
+      <!-- Capacidad Column -->
+      <ng-container matColumnDef="capacidad">
+        <th mat-header-cell *matHeaderCellDef>Capacidad</th>
+        <td mat-cell *matCellDef="let room">{{ room.capacidad }} Personas</td>
+      </ng-container>
+
+      <!-- Ubicación Column -->
+      <ng-container matColumnDef="ubicacion">
+        <th mat-header-cell *matHeaderCellDef>Ubicación</th>
+        <td mat-cell *matCellDef="let room">{{ getUbicacionDescripcion(room.ubicacion_id) }}</td>
+      </ng-container>
+
+      <!-- Precio Column -->
+      <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef>Precio</th>
+        <td mat-cell *matCellDef="let room">{{ room.precio | currency }}</td>
+      </ng-container>
+
+      <!-- Disponible Column -->
+      <ng-container matColumnDef="disponible">
+        <th mat-header-cell *matHeaderCellDef>Disponible</th>
+        <td mat-cell *matCellDef="let room">{{ room.disponible ? 'Sí' : 'No' }}</td>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let room">
+          <button mat-icon-button color="accent" [routerLink]="['/rooms/edit', room.sala_id]">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteRoom(room.sala_id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

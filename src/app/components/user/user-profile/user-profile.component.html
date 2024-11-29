@@ -1,0 +1,41 @@
+<mat-card class="profile-container mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>Perfil de Usuario</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="profile-details" fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+      <mat-icon class="profile-icon">account_circle</mat-icon>
+      <div fxFlex>
+        <p><strong>Nombre:</strong> {{ user?.nombre }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ user?.email }}</p>
+        <p><strong>Rol:</strong> 
+          <ng-container *ngIf="user?.rol_id === 1">Administrador</ng-container>
+          <ng-container *ngIf="user?.rol_id === 2">Cliente</ng-container>
+        </p>
+        <p *ngIf="user?.contacto"><strong>Teléfono:</strong> {{ user?.contacto?.telefono }}</p>
+        <p *ngIf="user?.contacto"><strong>Dirección:</strong> {{ user?.contacto?.direccion }}</p>
+        <p *ngIf="!user?.contacto" class="missing-contact-info">Falta información de contacto</p>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="profile-actions" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+      <button mat-raised-button color="primary" (click)="editProfile()">Editar Perfil</button>
+      <button mat-raised-button color="warn" (click)="changePassword()">Cambiar Contraseña</button>
+      <button mat-raised-button color="accent" (click)="editContact()">Editar Contacto</button>
+    </div>
+    <div class="custom-button" *ngIf="user?.rol_id === 1">
+      <button mat-fab extended [routerLink]="['/profile/usuarios']">
+        <mat-icon>person</mat-icon>
+        Usuarios
+      </button>
+      <button mat-fab extended [routerLink]="['/profile/administradores']">
+        <mat-icon>admin_panel_settings</mat-icon>
+        Administrador
+      </button>
+      <button mat-fab extended [routerLink]="['/profile/roles']">
+        <mat-icon>manage_accounts</mat-icon>
+        Roles
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

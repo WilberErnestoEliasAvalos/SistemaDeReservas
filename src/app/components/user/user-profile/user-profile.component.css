@@ -1,0 +1,72 @@
+.profile-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .profile-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .profile-icon {
+    color: #3f51b5;
+    font-size: 70px;
+    height: auto;
+    width: auto;
+    flex-shrink: 0;
+  }
+  
+  .profile-details p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .profile-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .profile-actions button {
+    min-width: 120px;
+  }
+
+  .custom-button {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    gap: 15px; /* Espaciado entre botones */
+    padding: 10px;
+    margin-top: 20px; /* Opcional: separa los botones del contenido superior */
+  }
+  
+  
+  button[mat-fab] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize; 
+  }
+  
+  @media (max-width: 600px) {
+    .profile-container {
+      padding: 10px;
+    }
+  
+    .profile-details {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .profile-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .profile-actions button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }

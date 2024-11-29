@@ -1,0 +1,68 @@
+/* Estilos generales para el diálogo */
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.room-info {
+  flex: 1;
+  background-color: #f5f5f5;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.room-info h3 {
+  margin-top: 0;
+  color: #3f51b5;
+}
+
+.room-info p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.room-info p strong {
+  color: #3f51b5;
+}
+
+.reservation-form {
+  flex: 1;
+}
+
+/* Estilos para el formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+button[mat-button] {
+  min-width: 80px;
+}
+
+/* Media queries para la vista de escritorio */
+@media (min-width: 600px) {
+  .modal-container {
+    flex-direction: row;
+  }
+}

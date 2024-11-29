@@ -1,0 +1,80 @@
+<mat-toolbar color="primary">
+  <div class="navbar-container">
+    <span class="toolbar-title">Sistema de Reservas</span>
+    <div class="navbar-buttons" *ngIf="isDesktop">
+      <button mat-button [routerLink]="['/']"><mat-icon>home</mat-icon>Inicio</button>
+      <button mat-button [matMenuTriggerFor]="roomsMenu">Salas</button>
+      <mat-menu #roomsMenu="matMenu">
+        <button mat-menu-item [routerLink]="['/rooms/availability']">Disponibilidad</button>
+        <ng-container *ngIf="isLoggedIn && userRole === 1">
+          <button mat-menu-item [routerLink]="['/rooms']">Lista de Salas</button>
+          <button mat-menu-item [routerLink]="['/rooms/detail']">Detalle de Sala</button>
+        </ng-container>
+      </mat-menu>
+      <ng-container *ngIf="isLoggedIn">
+        <button mat-button [routerLink]="['/reservations']">Reservaciones</button>
+        <button mat-button [matMenuTriggerFor]="profileMenu">
+          <mat-icon class="profile-icon">account_circle</mat-icon> Perfil
+          <span *ngIf="unreadCount > 0" class="notification-dot"></span>
+        </button>
+        <mat-menu #profileMenu="matMenu">
+          <button mat-menu-item [routerLink]="['/profile']">Ver Perfil</button>
+          <button mat-menu-item [matMenuTriggerFor]="notificationsMenu">
+            <mat-icon>notifications</mat-icon> Notificaciones
+            <span *ngIf="unreadCount > 0" class="notification-badge">{{ unreadCount }}</span>
+          </button>
+          <mat-menu #notificationsMenu="matMenu">
+            <app-notifications></app-notifications>
+          </mat-menu>
+          <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
+        </mat-menu>
+      </ng-container>
+      <ng-container *ngIf="!isLoggedIn">
+        <button mat-button [routerLink]="['/login']">Iniciar Sesión</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn && userRole === 1">
+        <button mat-button [routerLink]="['/reportes']"><mat-icon>assessment</mat-icon>Reportes</button>
+      </ng-container>
+    </div>
+    <div class="navbar-buttons-mobile" *ngIf="!isDesktop">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/']"><mat-icon>home</mat-icon>Inicio</button>
+        <button mat-menu-item [matMenuTriggerFor]="roomsMenuSm">Salas</button>
+        <mat-menu #roomsMenuSm="matMenu">
+          <button mat-menu-item [routerLink]="['/rooms/availability']">Disponibilidad</button>
+          <ng-container *ngIf="isLoggedIn && userRole === 1">
+            <button mat-menu-item [routerLink]="['/rooms']">Lista de Salas</button>
+            <button mat-menu-item [routerLink]="['/rooms/detail']">Detalle de Sala</button>
+          </ng-container>
+        </mat-menu>
+        <ng-container *ngIf="isLoggedIn">
+          <button mat-menu-item [routerLink]="['/reservations']">Reservaciones</button>
+          <button mat-menu-item [matMenuTriggerFor]="profileMenuSm">
+            <mat-icon class="profile-icon">account_circle</mat-icon> Perfil
+            <span *ngIf="unreadCount > 0" class="notification-dot"></span>
+          </button>
+          <mat-menu #profileMenuSm="matMenu">
+            <button mat-menu-item [routerLink]="['/profile']">Ver Perfil</button>
+            <button mat-menu-item [matMenuTriggerFor]="notificationsMenuSm">
+              <mat-icon>notifications</mat-icon> Notificaciones
+              <span *ngIf="unreadCount > 0" class="notification-badge">{{ unreadCount }}</span>
+            </button>
+            <mat-menu #notificationsMenuSm="matMenu">
+              <app-notifications></app-notifications>
+            </mat-menu>
+            <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
+          </mat-menu>
+        </ng-container>
+        <ng-container *ngIf="!isLoggedIn">
+          <button mat-menu-item [routerLink]="['/login']">Iniciar Sesión</button>
+        </ng-container>
+        <ng-container *ngIf="isLoggedIn && userRole === 1">
+          <button mat-menu-item [routerLink]="['/reportes']"><mat-icon>assessment</mat-icon>Reportes</button>
+        </ng-container>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>

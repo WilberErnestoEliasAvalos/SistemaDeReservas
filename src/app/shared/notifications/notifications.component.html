@@ -1,0 +1,11 @@
+<div class="notifications-container">
+  <ul>
+    <li *ngFor="let notification of notifications$ | async; let i = index">
+      "{{ notification.message }}"Para más detalles sobre tu reserva haz clic 
+      <a href="#" (click)="navigateToDetail(notification.reservationId); notificationService.markAsRead(i)">aquí</a>.
+    </li>
+  </ul>
+  <button mat-icon-button (click)="clearNotifications()">
+    <mat-icon>cleaning_services</mat-icon>
+  </button>
+</div>

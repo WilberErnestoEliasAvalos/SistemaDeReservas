@@ -1,0 +1,25 @@
+.room-list {
+  padding: 20px;
+}
+
+.mat-elevation-z8 {
+  overflow: auto;
+  margin-top: 20px;
+}
+
+.mat-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 8px;
+}
+.mat-cell .mat-mini-fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.mat-cell .mat-icon {
+  font-size: 20px;
+}

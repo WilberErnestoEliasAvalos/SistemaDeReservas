@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Detalle de Sala</h2>
+<mat-dialog-content>
+  <img [src]="data.room.img" alt="Imagen de la sala" style="width: 100%; max-height: 300px;" *ngIf="data.room.img" />
+  <p><strong>Nombre:</strong> {{ data.room.nombre }}</p>
+  <p><strong>Ubicación:</strong> {{ getUbicacionDescripcion(data.room.ubicacion_id) }}</p>
+  <p><strong>Capacidad:</strong> {{ data.room.capacidad }} Personas</p>
+  <p><strong>Precio:</strong> {{ data.room.precio | currency }}</p>
+  <p><strong>Actividad:</strong> {{ data.room.actividad }}</p>
+  <p><strong>Descripción:</strong> {{ data.room.descripcion }}</p>
+  <p><strong>Disponible:</strong> {{ data.room.disponible ? 'Sí' : 'No' }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

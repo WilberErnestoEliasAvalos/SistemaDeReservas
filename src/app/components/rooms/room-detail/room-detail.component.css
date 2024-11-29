@@ -1,0 +1,55 @@
+.room-list {
+	padding: 20px;
+}
+
+.mat-elevation-z8 {
+	overflow: auto;
+	margin-top: 20px;
+}
+
+.mat-table-responsive {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.mat-header-cell,
+.mat-cell {
+	padding: 8px;
+}
+.mat-cell .mat-mini-fab {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.mat-cell .mat-icon {
+	font-size: 20px;
+}
+
+.room-card {
+	max-width: 400px;
+}
+.room-cards-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 16px;
+	padding: 16px;
+}
+.room-header-image {
+	background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+	background-size: cover;
+}
+
+.buscador {
+	padding: 15px;
+}
+
+.room-card {
+	cursor: pointer; /* Cambia el cursor a pointer */
+	transition: transform 0.2s ease; /* Suaviza el efecto */
+  }
+  
+  .room-card:hover {
+	transform: scale(1.02); /* Opcional: Un pequeño efecto de agrandamiento */
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Opcional: Sombra para resaltar el card */	
+  }
+  

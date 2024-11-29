@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Reservar Sala</h2>
+<mat-dialog-content>
+  <div class="modal-container">
+    <div class="room-info">
+      <h3>{{ data.room.nombre }}</h3>
+      <p><strong>Capacidad:</strong> {{ data.room.capacidad }} personas</p>
+      <p><strong>Actividades:</strong> {{ data.room.actividad }}</p>
+      <p><strong>Descripción:</strong> {{ data.room.descripcion }}</p>
+      <p><strong>Precio:</strong> ${{ data.room.precio }}/hora</p>
+    </div>
+    <div class="reservation-form">
+      <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de Reserva</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="fecha_reserva" [min]="minDate" required (focus)="picker1.open()" (dateChange)="onFechaReservaChange()">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Hora de Inicio</mat-label>
+          <mat-select formControlName="hora_inicio" required (selectionChange)="onHoraInicioChange()">
+            <mat-option *ngFor="let time of availableTimes" [value]="time" [disabled]="isTimeOccupied(time)">{{ time }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Hora de Fin</mat-label>
+          <mat-select formControlName="hora_fin" required>
+            <mat-option *ngFor="let time of availableEndTimes" [value]="time">{{ time }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-dialog-actions>
+          <button mat-button type="button" (click)="onNoClick()">Cancelar</button>
+          <button mat-button type="submit" [disabled]="!reservationForm.valid">Reservar</button>
+        </mat-dialog-actions>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>

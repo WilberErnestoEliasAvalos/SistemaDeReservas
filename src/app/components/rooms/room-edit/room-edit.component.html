@@ -1,0 +1,71 @@
+<div class="room-edit">
+  <h2>Editar Sala</h2>
+  <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" required>
+      <mat-error *ngIf="roomForm.get('nombre')?.hasError('required')">
+        El nombre es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Capacidad</mat-label>
+      <input matInput type="number" formControlName="capacidad" required>
+      <mat-error *ngIf="roomForm.get('capacidad')?.hasError('required')">
+        La capacidad es obligatoria
+      </mat-error>
+      <mat-error *ngIf="roomForm.get('capacidad')?.hasError('min')">
+        La capacidad debe ser mayor que 0
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Ubicación</mat-label>
+      <mat-select formControlName="ubicacion_id" required>
+        <mat-option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.ubicacion_id">
+          {{ ubicacion.descripcion }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="roomForm.get('ubicacion_id')?.hasError('required')">
+        La ubicación es obligatoria
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" formControlName="precio" required>
+      <mat-error *ngIf="roomForm.get('precio')?.hasError('required')">
+        El precio es obligatorio
+      </mat-error>
+      <mat-error *ngIf="roomForm.get('precio')?.hasError('min')">
+        El precio debe ser mayor o igual a 0
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Actividad</mat-label>
+      <input matInput formControlName="actividad" required>
+      <mat-error *ngIf="roomForm.get('actividad')?.hasError('required')">
+        La actividad es obligatoria
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="descripcion"></textarea>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="disponible">Disponible</mat-checkbox>
+
+    <div class="file-input-container">
+      <label for="file">Imagen</label>
+      <input type="file" id="file" (change)="onFileSelected($event)">
+    </div>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary" type="submit" [disabled]="roomForm.invalid">Guardar</button>
+      <button mat-button color="warn" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</div>

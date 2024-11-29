@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="form-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Crear Nueva Sala</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Capacidad</mat-label>
+            <input matInput type="number" formControlName="capacidad" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Ubicación</mat-label>
+            <mat-select formControlName="ubicacion_id" required>
+              <mat-option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.ubicacion_id">
+                {{ ubicacion.descripcion }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input matInput type="number" formControlName="precio" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Actividad</mat-label>
+            <input matInput formControlName="actividad" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="descripcion"></textarea>
+          </mat-form-field>
+
+          <mat-checkbox formControlName="disponible">Disponible</mat-checkbox>
+
+          <div class="file-input-container">
+            <label for="file">Imagen</label>
+            <input type="file" id="file" (change)="onFileSelected($event)">
+          </div>
+
+          <div class="button-group">
+            <button mat-raised-button color="primary" type="submit">Crear</button>
+            <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="preview-container" *ngIf="!isSmallScreen">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Vista Previa de la Sala</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Nombre:</strong> {{ roomForm.get('nombre')?.value }}</p>
+        <p><strong>Capacidad:</strong> {{ roomForm.get('capacidad')?.value }} Personas</p>
+        <p><strong>Ubicación:</strong> {{ getUbicacionDescripcion(roomForm.get('ubicacion_id')?.value) }}</p>
+        <p><strong>Precio:</strong> {{ roomForm.get('precio')?.value | currency }}</p>
+        <p><strong>Actividad:</strong> {{ roomForm.get('actividad')?.value }}</p>
+        <p><strong>Descripción:</strong> {{ roomForm.get('descripcion')?.value }}</p>
+        <p><strong>Disponible:</strong> {{ roomForm.get('disponible')?.value ? 'Sí' : 'No' }}</p>
+        <p *ngIf="imageUrl"><strong>Imagen:</strong> <img [src]="imageUrl" alt="Imagen de la sala" width="100"></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

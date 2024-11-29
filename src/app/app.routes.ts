@@ -1,0 +1,37 @@
+import { Routes } from '@angular/router';
+import { HomeComponent } from './components/public/home/home.component';
+import { RoomListComponent } from './components/rooms/room-list/room-list.component';
+import { RoomAvailabilityComponent } from './components/rooms/room-availability/room-availability.component';
+import { RoomCreateComponent } from './components/rooms/room-create/room-create.component';
+import { RoomEditComponent } from './components/rooms/room-edit/room-edit.component';
+import { RoomDetailComponent } from './components/rooms/room-detail/room-detail.component';
+import { ReservationListComponent } from './components/reservation/reservation-list/reservation-list.component';
+import { ReservationCreateComponent } from './components/reservation/reservation-create/reservation-create.component';
+import { ReservationDetailComponent } from './components/reservation/reservation-detail/reservation-detail.component';
+import { ProfileComponent } from './components/user/user-profile/user-profile.component';
+import { UsuariosListComponent } from './components/user/usuarios-list/usuarios-list.component';
+import { AdministradoresListComponent } from './components/user/administradores-list/administradores-list.component';
+import { UserLoginComponent } from './components/user/user-login/user-login.component';
+import { UserRegisterComponent } from './components/user/user-register/user-register.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { RolesListComponent } from './components/user/roles-list/roles-list.component'
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'rooms', component: RoomListComponent },
+  { path: 'rooms/availability', component: RoomAvailabilityComponent },
+  { path: 'rooms/create', component: RoomCreateComponent },
+  { path: 'rooms/edit/:id', component: RoomEditComponent },
+  { path: 'rooms/detail', component: RoomDetailComponent },
+  { path: 'reservations', component: ReservationListComponent },
+  { path: 'reservations/create', component: ReservationCreateComponent },
+  { path: 'reservations/:id', component: ReservationDetailComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/usuarios', component: UsuariosListComponent },
+  { path: 'profile/administradores', component: AdministradoresListComponent },
+  { path: 'profile/roles', component: RolesListComponent},
+  { path: 'login', component: UserLoginComponent },
+  { path: 'register', component: UserRegisterComponent },
+  { path: 'reportes', component: ReportesComponent },
+  { path: '**', redirectTo: '/' },
+];

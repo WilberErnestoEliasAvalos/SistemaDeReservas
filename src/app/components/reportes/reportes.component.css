@@ -1,0 +1,60 @@
+.reporte-card {
+  margin: 20px;
+  padding: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .form-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .full-width {
+    flex: 1 1 calc(33.333% - 20px);
+    margin: 10px;
+  }
+}
+
+.mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.mat-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: center;
+}
+
+.chart-container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  max-width: 800px; /* Establecer un ancho máximo para el gráfico */
+  margin: 0 auto; /* Centrar el gráfico */
+}
+
+@media (max-width: 600px) {
+  .chart-container {
+    height: 300px;
+  }
+}

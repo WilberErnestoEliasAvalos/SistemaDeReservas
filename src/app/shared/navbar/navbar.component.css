@@ -1,0 +1,85 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar-title {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .toolbar-title {
+    font-size: 1.2rem;
+  }
+
+  button[mat-button] {
+    font-size: 0.8rem;
+  }
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar-buttons-mobile {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.notification-badge {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  margin-left: 5px;
+}
+
+.notification-dot {
+  background-color: red;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  animation: blink 1s infinite;
+  margin-left: 5px;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.notifications-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.notifications-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notifications-container li {
+  margin-bottom: 10px;
+}
+
+.notifications-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.notifications-container a:hover {
+  text-decoration: underline;
+}
+
