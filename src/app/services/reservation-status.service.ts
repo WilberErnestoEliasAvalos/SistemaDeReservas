@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReservationStatus } from '../models/reservation-status';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationStatusService {
-  private apiUrl = 'https://flowery-caterwauling-echium.glitch.me/estados_reserva';
+  private apiUrl = `${environment.apiUrl}/estados_reserva`;
 
   constructor(private http: HttpClient) {}
 

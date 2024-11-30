@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReservationHistory } from '../models/reservation-history';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationHistoryService {
-  private apiUrl = 'https://flowery-caterwauling-echium.glitch.me/reservation-histories';
+  private apiUrl = `${environment.apiUrl}/reservation-histories`;
 
   constructor(private http: HttpClient) {}
 
