@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://flowery-caterwauling-echium.glitch.me',
+    apiUrl: 'http://localhost:3000/',
   };
   
